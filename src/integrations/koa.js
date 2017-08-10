@@ -10,7 +10,7 @@ module.exports.koaJwtSecret = (options = {}) => {
   const client = new JwksClient(options);
 
   return function secretProvider({ alg, kid } = {}) {
-
+    kid = kid || options.kid || null
     return new Promise((resolve, reject) => {
 
       // Only RS256 is supported.
